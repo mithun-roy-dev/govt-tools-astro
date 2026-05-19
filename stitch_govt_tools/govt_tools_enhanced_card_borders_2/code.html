@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="bn" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GovUtil BD - Government Employee Utility Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-high": "#e7e8e9",
+                "outline": "#6f7a73",
+                "on-secondary": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-primary-fixed-variant": "#00513b",
+                "tertiary": "#074f3b",
+                "accent-blue": "#E7F1FF",
+                "on-tertiary-fixed": "#002116",
+                "surface-container-low": "#f3f4f5",
+                "border-subtle": "#E9ECEF",
+                "secondary-container": "#d1e7dd",
+                "on-primary": "#ffffff",
+                "on-primary-container": "#92e7c3",
+                "inverse-surface": "#2e3132",
+                "surface-container-highest": "#e1e3e4",
+                "secondary-fixed": "#d1e7dd",
+                "surface-glass": "rgba(255, 255, 255, 0.7)",
+                "tertiary-fixed-dim": "#94d4b9",
+                "on-tertiary": "#ffffff",
+                "primary": "#00503a",
+                "inverse-primary": "#83d7b4",
+                "surface": "#f8f9fa",
+                "accent-amber": "#FFF3CD",
+                "on-background": "#191c1d",
+                "secondary": "#4f635b",
+                "on-tertiary-container": "#a3e3c7",
+                "on-secondary-fixed-variant": "#374b44",
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#0a513c",
+                "error": "#ba1a1a",
+                "on-surface-variant": "#3f4944",
+                "secondary-fixed-dim": "#b6cbc2",
+                "on-surface": "#191c1d",
+                "primary-fixed-dim": "#83d7b4",
+                "on-secondary-container": "#556961",
+                "tertiary-container": "#286751",
+                "surface-tint": "#046c50",
+                "on-error": "#ffffff",
+                "outline-variant": "#bec9c2",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed": "#0c1f19",
+                "surface-variant": "#e1e3e4",
+                "background": "#f8f9fa",
+                "tertiary-fixed": "#b0f0d4",
+                "surface-bright": "#f8f9fa",
+                "primary-container": "#006a4e",
+                "primary-fixed": "#9ef4d0",
+                "on-primary-fixed": "#002116",
+                "inverse-on-surface": "#f0f1f2",
+                "surface-dim": "#d9dadb",
+                "surface-container": "#edeeef",
+                "accent-purple": "#F3E5F5"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-md": "16px",
+                "section-padding": "64px",
+                "margin-mobile": "16px",
+                "container-max": "1200px",
+                "gutter": "24px",
+                "stack-sm": "8px",
+                "stack-lg": "32px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Hind Siliguri"],
+                "bangla-body": ["Hind Siliguri"],
+                "subtitle-sm": ["Inter"],
+                "headline-md": ["Hind Siliguri"],
+                "body-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg": ["Hind Siliguri"],
+                "label-bold": ["Inter"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "bangla-body": ["16px", {"lineHeight": "1.8", "fontWeight": "400"}],
+                "subtitle-sm": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glass-header {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .tool-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bangla-text { font-family: 'Hind Siliguri', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface-glass backdrop-blur-md dark:bg-inverse-surface/80 docked full-width top-0 sticky z-50 border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary" href="#">Govt Tools</a>
+</div>
+<nav class="hidden md:flex gap-8 items-center"><a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-bold font-label-bold flex items-center gap-2 group" href="#"><div class="flex flex-col items-center"><span class="bangla-text text-base">সবগুলো টুলস</span></div><span class="material-symbols-outlined text-sm">keyboard_arrow_down</span></a>
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary dark:border-inverse-primary pb-1 text-label-bold font-label-bold flex items-center gap-2 group" href="#finance"><div class="flex flex-col items-center"><span class="bangla-text text-base">আর্থিক ও বেতন</span></div><span class="material-symbols-outlined text-sm">keyboard_arrow_down</span></a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-bold font-label-bold flex items-center gap-2 group" href="#pension"><div class="flex flex-col items-center"><span class="bangla-text text-base">পেনশন ও অবসর</span></div><span class="material-symbols-outlined text-sm">keyboard_arrow_down</span></a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-bold font-label-bold flex items-center gap-2 group" href="#utility"><div class="flex flex-col items-center"><span class="bangla-text text-base">ইউটিলিটি ও ডকুমেন্ট</span></div><span class="material-symbols-outlined text-sm">keyboard_arrow_down</span></a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-bold font-label-bold flex items-center gap-2 group" href="#records"><div class="flex flex-col items-center"><span class="bangla-text text-base">প্রশাসন ও রেকর্ড</span></div><span class="material-symbols-outlined text-sm">keyboard_arrow_down</span></a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-bold font-label-bold flex items-center gap-2 group" href="#blog"><div class="flex flex-col items-center"><span class="bangla-text text-base">সরকারি নিউজ ব্লগ</span></div></a></nav>
+<div class="flex items-center gap-4"><div class="hidden md:flex items-center gap-6 mr-2">
+<div class="flex items-center gap-1 cursor-pointer group">
+<span class="text-primary font-label-bold text-label-bold">BN</span>
+<span class="text-on-surface-variant font-label-bold text-label-bold">/</span>
+<span class="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold">EN</span>
+</div>
+<button class="flex items-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div><button class="hidden md:block text-on-surface-variant hover:bg-secondary-container/50 px-4 py-2 rounded-lg transition-all text-label-bold font-label-bold">Support</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-bold text-label-bold hover:opacity-90 active:scale-95 transition-all">Sign In</button></div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative py-section-padding bg-gradient-to-b from-secondary-container/30 to-background overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter text-center">
+<h1 class="font-headline-lg text-headline-lg md:text-5xl text-primary mb-stack-sm bangla-text">
+                    সরকারি চাকরিজীবীদের হিসাব ও ডকুমেন্ট প্রসেসিং এখন এক ক্লিকেই
+                </h1>
+<p class="text-body-lg text-secondary mb-stack-lg max-w-2xl mx-auto opacity-80">
+                    All-in-one smart utility tools for Bangladeshi government employees. Simplify your calculations, manage service records, and process documents instantly.
+                </p>
+<!-- Search Bar -->
+<div class="max-w-xl mx-auto relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full pl-12 pr-6 py-4 rounded-full border-none shadow-lg bg-surface-container-lowest focus:ring-2 focus:ring-primary bangla-text text-lg" placeholder="সার্ভিস বা টুল খুঁজুন (যেমন: বেতন ক্যালকুলেটর, জিপিএফ...)" type="text"/>
+<button class="absolute right-2 top-2 bottom-2 bg-primary text-on-primary px-6 rounded-full font-bold hover:bg-primary-container transition-colors">
+                        খুঁজুন
+                    </button>
+</div>
+</div>
+</section>
+<!-- Tool Categories Navigation -->
+<section class="sticky top-[64px] z-40 bg-surface border-b border-border-subtle py-4">
+<div class="max-w-container-max mx-auto px-margin-mobile flex gap-4 overflow-x-auto no-scrollbar scroll-smooth"><button class="flex-none bg-primary text-on-primary px-6 py-2 rounded-full font-label-bold whitespace-nowrap bangla-text">সডলগুলু</button><button class="flex-none bg-secondary-container/50 text-primary px-6 py-2 rounded-full font-label-bold whitespace-nowrap hover:bg-secondary-container transition-colors bangla-text">আর্থিক ও বেতন</button><button class="flex-none bg-secondary-container/50 text-primary px-6 py-2 rounded-full font-label-bold whitespace-nowrap hover:bg-secondary-container transition-colors bangla-text">পেনশন ও অবসর</button><button class="flex-none bg-secondary-container/50 text-primary px-6 py-2 rounded-full font-label-bold whitespace-nowrap hover:bg-secondary-container transition-colors bangla-text">ইউটিলিটি টুলস</button><button class="flex-none bg-secondary-container/50 text-primary px-6 py-2 rounded-full font-label-bold whitespace-nowrap hover:bg-secondary-container transition-colors bangla-text">প্রশাসন ও রেকর্ড</button></div>
+</section>
+<!-- Tools Grid Section -->
+<section class="py-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter space-y-16">
+<!-- 1. Finance & Salary Tools -->
+<div id="finance">
+<div class="flex items-center gap-3 mb-stack-lg">
+<span class="material-symbols-outlined text-primary p-2 bg-accent-blue rounded-xl">payments</span>
+<h2 class="text-headline-md font-headline-md bangla-text">আর্থিক ও বেতন সংক্রান্ত টুলস</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Card: Pay Scale 2026 -->
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><span class="absolute top-2 right-2 bg-red-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold shadow-sm z-10">New/🔥</span>
+<div class="mb-4 inline-flex p-3 bg-blue-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl" style='font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;'>calculate</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">পে স্কেল ২০২৬ ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 line-clamp-2 bangla-text">নতুন বেতন কাঠামো অনুযায়ী আপনার সম্ভাব্য বেতন নির্ধারণ করুন।</p></div>
+<!-- Card: Salary Calculator -->
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-emerald-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance_wallet</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">সরকারি বেতন ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 bangla-text">চলতি বছরের ইনক্রিমেন্টসহ বেতন ও ভাতার বিস্তারিত হিসাব দেখুন।</p></div>
+<!-- Card: GPF -->
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-amber-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl" style='font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;'>show_chart</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">জিপিএফ মুনাফা ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 bangla-text">জিপিএফ অ্যাকাউন্টের বার্ষিক মুনাফা ও স্থিতি বের করুন।</p></div>
+<!-- Card: Tax -->
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-purple-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">receipt_long</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">আয়কর রিটার্ন হেল্পার</h3>
+<p class="text-sm text-slate-500 bangla-text">বার্ষিক আয় ও করমুক্ত সীমার ভিত্তিতে ট্যাক্স রিটার্ন তৈরি।</p></div>
+<!-- Card: House Rent -->
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-indigo-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">home_work</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">বাড়ি ভাড়া ভাতা বিভাজক</h3>
+<p class="text-sm text-slate-500 bangla-text">এলাকাভেদে বাড়ি ভাড়া ভাতার সঠিক হিসাব।</p></div>
+<!-- Card: Bonus -->
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-rose-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl" style='font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;'>celebration</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">উৎসব বোনাস হিসাবকারী</h3>
+<p class="text-sm text-slate-500 bangla-text">ঈদুল ফিতর, আযহা ও বৈশাখী ভাতার ক্যালকুলেশন।</p></div>
+<!-- Card: Fixation -->
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-cyan-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">track_changes</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">বেতন ফিক্সেশন ট্র্যাকিং টুল</h3>
+<p class="text-sm text-slate-500 bangla-text">আপনার সার্ভিস বুকে বেতন ফিক্সেশনের সঠিকতা যাচাই।</p></div>
+<!-- Card: TA/DA -->
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-teal-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">distance</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">ভ্রমণ ও দৈনিক ভাতা ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 bangla-text">সরকারি ট্যুরের দূরত্ব ও সময় অনুযায়ী টিএ/ডিএ বিল হিসাব।</p></div>
+</div>
+</div>
+<!-- 2. Pension & Retirement Tools -->
+<div id="pension">
+<div class="flex items-center gap-3 mb-stack-lg">
+<span class="material-symbols-outlined text-primary p-2 bg-accent-amber rounded-xl">elderly</span>
+<h2 class="text-headline-md font-headline-md bangla-text">পেনশন ও অবসর সংক্রান্ত টুলস</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-amber-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl" style='font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;'>savings</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">পেনশন ও আনুতোষিক ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 bangla-text">অবসরোত্তর এককালীন আনুতোষিক বা গ্র্যাচুইটির হিসাব।</p></div>
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-green-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl" style='font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;'>currency_exchange</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">পেনশন সমর্পণ হিসাবকারী</h3>
+<p class="text-sm text-slate-500 bangla-text">পেনশন সমর্পণ বা কমিউটেশন ভ্যালু হিসাব করুন।</p></div>
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-blue-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">family_restroom</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">পারিবারিক পেনশন ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 bangla-text">উত্তরাধিকারীদের প্রাপ্য পেনশন ও ভাতার বিবরণ।</p></div>
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-orange-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">calendar_month</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">এলপিআর ছুটি নগদায়ন ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 bangla-text">অর্জিত ছুটির বিপরীতে কত টাকা নগদ পাবেন তা দেখুন।</p></div>
+</div>
+</div>
+<!-- Featured Section: iLovePDF Style Integration -->
+<div class="bg-primary-container/10 rounded-3xl p-stack-lg border border-primary/20 flex flex-col md:flex-row items-center gap-stack-lg">
+<div class="flex-1 space-y-4">
+<span class="inline-block px-3 py-1 bg-primary text-on-primary rounded-full text-xs font-bold">SMART WORKFLOW</span>
+<h2 class="text-headline-lg bangla-text text-primary">ইউটিলিটি ও ডকুমেন্ট প্রসেসর</h2>
+<p class="text-body-md text-on-surface-variant bangla-text">আপনার প্রতিদিনের দাপ্তরিক কাজকে সহজ করতে আমাদের উন্নত টুলসগুলো ব্যবহার করুন। বাংলা টাইপিং থেকে শুরু করে ছবি রিসাইজার - সব পাবেন এক জায়গায়।</p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:shadow-lg transition-all">
+                            সবগুলো দেখুন <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="flex-1 grid grid-cols-2 gap-4">
+<div class="bg-surface p-4 rounded-2xl border text-center hover:bg-primary/5 transition-colors border-slate-300">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">picture_as_pdf</span>
+<p class="font-bold text-sm bangla-text">PDF to Word</p>
+</div>
+<div class="bg-surface p-4 rounded-2xl border text-center hover:bg-primary/5 transition-colors border-slate-300">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">photo_size_select_large</span>
+<p class="font-bold text-sm bangla-text">Photo Resizer</p>
+</div>
+<div class="bg-surface p-4 rounded-2xl border text-center hover:bg-primary/5 transition-colors border-slate-300">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">ink_pen</span>
+<p class="font-bold text-sm bangla-text">Compressor</p>
+</div>
+<div class="bg-surface p-4 rounded-2xl border text-center hover:bg-primary/5 transition-colors border-slate-300">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">verified_user</span>
+<p class="font-bold text-sm bangla-text">Verification</p>
+</div>
+</div>
+</div>
+<!-- 4. Admin & Records -->
+<div id="records">
+<div class="flex items-center gap-3 mb-stack-lg">
+<span class="material-symbols-outlined text-primary p-2 bg-accent-purple rounded-xl">badge</span>
+<h2 class="text-headline-md font-headline-md bangla-text">প্রশাসন ও চাকুরির রেকর্ড টুলস</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-purple-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">event_available</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">চাকুরির বয়স ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 bangla-text">আজকের দিন পর্যন্ত আপনার মোট চাকরিকাল নিখুঁতভাবে জানুন।</p></div>
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-emerald-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">holiday_village</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">অর্জিত ছুটি ক্যালকুলেটর</h3>
+<p class="text-sm text-slate-500 bangla-text">গড় বেতনে ও অর্ধ-গড় বেতনে অর্জিত ছুটির নির্ভুল হিসাব।</p></div>
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-sky-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">leaderboard</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">জ্যেষ্ঠতা তালিকা র‍্যাংক চেকার</h3>
+<p class="text-sm text-slate-500 bangla-text">ব্যাচ ভিত্তিক জ্যেষ্ঠতা তালিকায় আপনার অবস্থান দেখুন।</p></div>
+<div class="tool-card group bg-white p-6 rounded-xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-lg border-slate-300"><div class="mb-4 inline-flex p-3 bg-rose-50 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">notifications_active</span>
+</div>
+<h3 class="font-bold text-xl mb-2 bangla-text text-slate-900">ইনক্রিমেন্ট তারিখ রিমাইন্ডার</h3>
+<p class="text-sm text-slate-500 bangla-text">পরবর্তী বার্ষিক ইনক্রিমেন্টের তারিখ ও বকেয়া হিসাব।</p></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust / Certification -->
+<section class="py-section-padding bg-surface-container">
+<div class="max-w-container-max mx-auto px-margin-mobile text-center">
+<h2 class="text-headline-md mb-stack-lg bangla-text opacity-70">The software trusted by thousands of government employees</h2>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
+<img alt="Seal of Bangladesh" class="h-16 w-auto" data-alt="A clean, high-resolution graphic of the Government Seal of Bangladesh featuring the national emblem in a professional circular format. The background is a soft, light-mode corporate gray, ensuring a minimal and institutional aesthetic. The lighting is uniform, highlighting the intricate details of the seal's golden and green elements, symbolizing official government utility and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxFEcZAE48z20zuFAnBPLQRR4xbfmr6On2Qwn9qk-e7hp65Vgq1R5ynbXW0EvLiwAQ2TfVBL93bWtWpb9b7n5ftCABSmH6ticbRs1Dzy2v9WnJiZj6aeoUjBhYTx4T_0B3nMs5SIFdPLWPXSGzdF1oUWJ359XH_DYp7-QbfFpnKuBSMfiO41-doJoO5Cs5pFUkxM0gJVe9EGtv4wwO1OGjWPi-y9hzYnFYsjIL_pupOmVFRRlaJTKOhgzlIHCn6TPzfWrrlV_MUjI"/>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+<span class="font-bold text-xl">100% Secure</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl">data_usage</span>
+<span class="font-bold text-xl">ISO 27001</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Recent News -->
+<section class="py-section-padding bg-background">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<span class="text-primary font-bold text-sm tracking-wider uppercase">Update</span>
+<h2 class="text-headline-md font-headline-md bangla-text mt-1">সাম্প্রতিক সরকারি নিউজ ও ব্লগ</h2>
+</div>
+<a class="text-primary font-label-bold flex items-center gap-1 hover:underline" href="#blog">
+        সবগুলো পড়ুন <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Blog Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl border border-border-subtle overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-video bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-5xl">image</span>
+</div>
+<div class="p-5 space-y-3">
+<span class="inline-block px-2 py-1 bg-accent-blue text-primary text-[10px] font-bold rounded-md uppercase">পেনশন নিউজ</span>
+<h3 class="font-label-bold text-lg leading-snug bangla-text">পেনশন সহজীকরণ বিধিমালা ২০২৪: কি কি পরিবর্তন আসছে?</h3>
+<p class="text-subtitle-sm text-on-surface-variant line-clamp-2 bangla-text">সরকারি চাকরিজীবীদের পেনশন প্রাপ্তি আরও সহজ করতে নতুন বিধিমালা জারি করেছে অর্থ মন্ত্রণালয়...</p>
+<a class="inline-flex items-center text-primary text-sm font-bold gap-1 hover:gap-2 transition-all" href="#">
+            আরও পড়ুন <span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+</article>
+<!-- Blog Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl border border-border-subtle overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-video bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-5xl">image</span>
+</div>
+<div class="p-5 space-y-3">
+<span class="inline-block px-2 py-1 bg-accent-amber text-on-tertiary-fixed-variant text-[10px] font-bold rounded-md uppercase">বেতন আপডেট</span>
+<h3 class="font-label-bold text-lg leading-snug bangla-text">নতুন পে-স্কেল ও বার্ষিক ইনক্রিমেন্ট নিয়ে সর্বশেষ তথ্য</h3>
+<p class="text-subtitle-sm text-on-surface-variant line-clamp-2 bangla-text">চলতি অর্থবছরে বেতন কাঠামোতে কোনো বড় পরিবর্তনের সম্ভাবনা আছে কি? বিস্তারিত আলোচনা...</p>
+<a class="inline-flex items-center text-primary text-sm font-bold gap-1 hover:gap-2 transition-all" href="#">
+            আরও পড়ুন <span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+</article>
+<!-- Blog Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl border border-border-subtle overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-video bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-5xl">image</span>
+</div>
+<div class="p-5 space-y-3">
+<span class="inline-block px-2 py-1 bg-accent-purple text-on-tertiary-fixed-variant text-[10px] font-bold rounded-md uppercase">সাধারণ নির্দেশিকা</span>
+<h3 class="font-label-bold text-lg leading-snug bangla-text">অনলাইনে সার্ভিস বুক আপডেট করার সঠিক নিয়মাবলী</h3>
+<p class="text-subtitle-sm text-on-surface-variant line-clamp-2 bangla-text">এখন থেকে ঘরে বসেই নিজের সার্ভিস রেকর্ড যাচাই ও সংশোধন করা সম্ভব। জেনে নিন পদ্ধতি...</p>
+<a class="inline-flex items-center text-primary text-sm font-bold gap-1 hover:gap-2 transition-all" href="#">
+            আরও পড়ুন <span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-background px-6 pb-12 pt-6">
+<div class="max-w-container-max mx-auto bg-surface-container-lowest rounded-[2rem] p-12 md:p-16 shadow-lg border border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+<!-- Left Column: Brand & Socials -->
+<div class="md:col-span-4 space-y-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+<span class="text-2xl font-bold text-on-surface">Govt Tools</span>
+</div>
+<p class="text-on-surface-variant text-body-md max-w-sm">
+          Govt Tools provides smart utility tools for government employees to simplify calculations and document processing.
+        </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">photo_camera</span>
+</a>
+<a class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">work</span>
+</a>
+<a class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">code</span>
+</a>
+</div>
+</div>
+<!-- Right Columns: Links -->
+<div class="md:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="space-y-4">
+<h4 class="font-bold font-label-bold text-on-surface">Product</h4>
+<ul class="space-y-2">
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Features</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Pricing</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Integrations</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Changelog</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold font-label-bold text-on-surface">Resources</h4>
+<ul class="space-y-2">
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Documentation</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Tutorials</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Blog</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Support</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold font-label-bold text-on-surface">Legal</h4>
+<ul class="space-y-2">
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Terms of Service</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Disclaimer</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Cookies Settings</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold font-label-bold text-on-surface">Company</h4>
+<ul class="space-y-2">
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">About</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Careers</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Contact</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary text-sm transition-colors" href="#">Partners</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant text-sm">
+        © 2024 Govt Tools. All rights reserved.
+      </p>
+<div class="flex flex-wrap justify-center gap-6">
+<span class="text-on-surface-variant text-sm">Designed for Government Employees</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.fontVariationSettings = "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24";
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.fontVariationSettings = "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+                }
+            });
+        });
+
+        // Search highlight effect
+        const searchInput = document.querySelector('input[type="text"]');
+        if(searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('scale-[1.02]');
+                searchInput.parentElement.style.transition = 'transform 0.3s ease';
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('scale-[1.02]');
+            });
+        }
+    </script>
+</body></html>

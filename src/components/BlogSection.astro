@@ -1,0 +1,149 @@
+---
+// BlogSection.astro — Recent government news / blog section
+interface BlogPost {
+  tag: string;
+  tagBg: string;
+  tagColor: string;
+  title: string;
+  excerpt: string;
+  href: string;
+}
+
+const posts: BlogPost[] = [
+  {
+    tag: "পেনশন নিউজ",
+    tagBg: "var(--color-accent-blue)",
+    tagColor: "var(--color-primary)",
+    title: "পেনশন সহজীকরণ বিধিমালা ২০২৪: কি কি পরিবর্তন আসছে?",
+    excerpt: "সরকারি চাকরিজীবীদের পেনশন প্রাপ্তি আরও সহজ করতে নতুন বিধিমালা জারি করেছে অর্থ মন্ত্রণালয়...",
+    href: "/blog/pension-rules-2024",
+  },
+  {
+    tag: "বেতন আপডেট",
+    tagBg: "var(--color-accent-amber)",
+    tagColor: "#7c5e00",
+    title: "নতুন পে-স্কেল ও বার্ষিক ইনক্রিমেন্ট নিয়ে সর্বশেষ তথ্য",
+    excerpt: "চলতি অর্থবছরে বেতন কাঠামোতে কোনো বড় পরিবর্তনের সম্ভাবনা আছে কি? বিস্তারিত আলোচনা...",
+    href: "/blog/pay-scale-update",
+  },
+  {
+    tag: "সাধারণ নির্দেশিকা",
+    tagBg: "var(--color-accent-purple)",
+    tagColor: "#6d28d9",
+    title: "অনলাইনে সার্ভিস বুক আপডেট করার সঠিক নিয়মাবলী",
+    excerpt: "এখন থেকে ঘরে বসেই নিজের সার্ভিস রেকর্ড যাচাই ও সংশোধন করা সম্ভব। জেনে নিন পদ্ধতি...",
+    href: "/blog/service-book-update",
+  },
+];
+---
+
+<section class="blog-section" id="blog">
+  <div class="container">
+    <!-- Section header -->
+    <div class="blog-header">
+      <div>
+        <span class="blog-label">UPDATE</span>
+        <h2 class="text-headline-md bangla-text blog-title">সাম্প্রতিক সরকারি নিউজ ও ব্লগ</h2>
+      </div>
+      <a href="/blog" class="blog-see-all">
+        <span class="bangla-text">সবগুলো পড়ুন</span>
+        <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Blog grid -->
+    <div class="blog-grid">
+      {posts.map((post) => (
+        <article class="blog-card">
+          <!-- Thumbnail placeholder -->
+          <div class="blog-card-thumb">
+            <span class="material-symbols-outlined" style="font-size:3rem; color:var(--color-outline);">article</span>
+          </div>
+
+          <div class="blog-card-body">
+            <span
+              class="blog-card-tag bangla-text"
+              style={`background:${post.tagBg}; color:${post.tagColor};`}
+            >
+              {post.tag}
+            </span>
+            <h3 class="blog-card-title bangla-text">{post.title}</h3>
+            <p class="text-body-sm line-clamp-2 bangla-text" style="color:var(--color-on-surface-variant);">
+              {post.excerpt}
+            </p>
+            <a href={post.href} class="blog-card-readmore">
+              <span class="bangla-text">আরও পড়ুন</span>
+              <span class="material-symbols-outlined" style="font-size:1rem;">chevron_right</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-section {
+    padding-block: var(--section-padding);
+    background: var(--color-background);
+  }
+
+  .blog-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: var(--stack-lg);
+    flex-wrap: wrap;
+  }
+
+  .blog-label {
+    display: inline-block;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .blog-title {
+    color: var(--color-on-surface);
+    margin: 0;
+  }
+
+  .blog-see-all {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: gap 0.2s ease;
+  }
+
+  .blog-see-all:hover { gap: 0.5rem; }
+
+  .blog-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-on-surface);
+  }
+
+  .blog-card-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+    margin-top: 0.25rem;
+  }
+
+  .blog-card-readmore:hover { gap: 0.5rem; }
+</style>

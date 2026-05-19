@@ -1,0 +1,142 @@
+---
+// SmartWorkflow.astro — Featured "iLovePDF-style" utility banner
+---
+
+<div class="workflow-banner" id="utility">
+  <!-- Left: copy -->
+  <div class="workflow-copy">
+    <span class="workflow-badge">SMART WORKFLOW</span>
+    <h2 class="text-headline-lg bangla-text" style="color:var(--color-primary);">
+      ইউটিলিটি ও ডকুমেন্ট প্রসেসর
+    </h2>
+    <p class="text-body-md bangla-text" style="color:var(--color-on-surface-variant); max-width:400px;">
+      আপনার প্রতিদিনের দাপ্তরিক কাজকে সহজ করতে আমাদের উন্নত টুলসগুলো ব্যবহার করুন।
+      বাংলা টাইপিং থেকে শুরু করে ছবি রিসাইজার — সব পাবেন এক জায়গায়।
+    </p>
+    <a href="/tools" class="btn-primary" style="align-self:flex-start; border-radius: var(--radius-lg); padding: 0.75rem 1.75rem; font-size: 1rem;">
+      <span class="bangla-text">সবগুলো দেখুন</span>
+      <span class="material-symbols-outlined" style="font-size:1.1rem;">arrow_forward</span>
+    </a>
+  </div>
+
+  <!-- Right: mini tool grid -->
+  <div class="workflow-grid">
+
+    <a href="/tools/pdf-to-word" class="mini-tool">
+      <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:2rem;">picture_as_pdf</span>
+      <p class="mini-tool-label">PDF to Word</p>
+    </a>
+
+    <a href="/tools/photo-resizer" class="mini-tool">
+      <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:2rem;">photo_size_select_large</span>
+      <p class="mini-tool-label bangla-text">ফটো রিসাইজার</p>
+    </a>
+
+    <a href="/tools/compressor" class="mini-tool">
+      <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:2rem;">compress</span>
+      <p class="mini-tool-label bangla-text">ফাইল কম্প্রেসর</p>
+    </a>
+
+    <a href="/tools/verification" class="mini-tool">
+      <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:2rem;">verified_user</span>
+      <p class="mini-tool-label bangla-text">ডকুমেন্ট ভেরিফাই</p>
+    </a>
+
+    <a href="/tools/bangla-typing" class="mini-tool">
+      <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:2rem;">keyboard</span>
+      <p class="mini-tool-label bangla-text">বাংলা টাইপিং</p>
+    </a>
+
+    <a href="/tools/signature" class="mini-tool">
+      <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:2rem;">draw</span>
+      <p class="mini-tool-label bangla-text">ই-স্বাক্ষর</p>
+    </a>
+
+  </div>
+</div>
+
+<style>
+  .workflow-banner {
+    background: linear-gradient(135deg,
+      rgba(0, 80, 58, 0.06) 0%,
+      rgba(209, 231, 221, 0.2) 100%
+    );
+    border: 1px solid rgba(0, 80, 58, 0.15);
+    border-radius: 1.5rem;
+    padding: var(--stack-lg) 2rem;
+    display: flex;
+    align-items: center;
+    gap: var(--stack-lg);
+    flex-wrap: wrap;
+  }
+
+  .dark .workflow-banner {
+    background: rgba(0, 80, 58, 0.08);
+    border-color: rgba(131, 215, 180, 0.15);
+  }
+
+  .workflow-copy {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .workflow-badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.875rem;
+    border-radius: var(--radius-full);
+    width: fit-content;
+  }
+
+  .workflow-grid {
+    flex: 1;
+    min-width: 280px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .mini-tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--color-surface-container-lowest);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1rem 0.5rem;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .mini-tool:hover {
+    background: rgba(0, 80, 58, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .dark .mini-tool {
+    background: var(--color-surface-container);
+    border-color: var(--color-outline);
+  }
+
+  .mini-tool-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-on-surface);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 600px) {
+    .workflow-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

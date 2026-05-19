@@ -1,0 +1,87 @@
+---
+// BaseLayout.astro — HTML shell for all pages
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+}
+
+const {
+  title = "GovUtil BD - সরকারি কর্মচারী ইউটিলিটি পোর্টাল",
+  description = "সরকারি চাকরিজীবীদের জন্য বেতন, পেনশন ও ইউটিলিটি ক্যালকুলেটর। All-in-one smart utility tools for Bangladeshi government employees.",
+  lang = "bn",
+} = Astro.props;
+---
+<!doctype html>
+<html lang={lang} class="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#00503a" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+
+  <title>{title}</title>
+
+  <!-- Fonts & Icons (preconnect for speed) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Global CSS imported below via Astro style -->
+
+
+  <!-- Alpine.js (defer) -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+  ></script>
+
+  <!-- Dark mode init: run before paint to prevent flash -->
+  <script is:inline>
+    (function () {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = stored === 'dark' || (!stored && prefersDark);
+      document.documentElement.classList.toggle('dark', isDark);
+      document.documentElement.classList.toggle('light', !isDark);
+    })();
+  </script>
+</head>
+<body>
+  <slot />
+
+  <!-- Global micro-interactions -->
+  <script is:inline>
+    // Tool card icon fill on hover
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.tool-card').forEach(card => {
+        const icon = card.querySelector('.card-icon');
+        if (!icon) return;
+        card.addEventListener('mouseenter', () => {
+          icon.style.fontVariationSettings = "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24";
+        });
+        card.addEventListener('mouseleave', () => {
+          icon.style.fontVariationSettings = "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+

@@ -1,0 +1,273 @@
+---
+// Hero.astro — Full-width hero section with animated search bar
+---
+
+<section class="hero-section">
+  <!-- Decorative background blobs -->
+  <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+
+  <div class="container hero-content">
+
+    <!-- Tagline badge -->
+    <div class="hero-badge animate-fade-in-up" style="animation-delay: 0.05s;">
+      <span class="material-symbols-outlined" style="font-size:1rem; color:var(--color-primary);">verified</span>
+      <span>বাংলাদেশ সরকারি কর্মচারীদের #১ ডিজিটাল টুলস</span>
+    </div>
+
+    <!-- Main headline -->
+    <h1 class="hero-title bangla-text animate-fade-in-up" style="animation-delay: 0.1s;">
+      সরকারি চাকরিজীবীদের হিসাব ও<br/>
+      ডকুমেন্ট প্রসেসিং এখন
+      <span class="hero-highlight">এক ক্লিকেই</span>
+    </h1>
+
+    <!-- Sub-headline -->
+    <p class="hero-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+      All-in-one smart utility tools for Bangladeshi government employees.
+      Simplify your calculations, manage service records, and process documents instantly.
+    </p>
+
+    <!-- Search Bar -->
+    <div
+      class="search-wrapper animate-fade-in-up"
+      style="max-width: 580px; margin-inline: auto; animation-delay: 0.3s;"
+    >
+      <div class="search-bar">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input
+          id="hero-search"
+          type="text"
+          class="search-input bangla-text"
+          placeholder="সার্ভিস বা টুল খুঁজুন (যেমন: বেতন ক্যালকুলেটর, জিপিএফ...)"
+          aria-label="Search tools"
+          autocomplete="off"
+        />
+        <button class="search-btn btn-primary bangla-text" type="button">
+          খুঁজুন
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick stat pills -->
+    <div class="hero-stats animate-fade-in-up" style="animation-delay: 0.4s;">
+      <div class="stat-pill">
+        <span class="material-symbols-outlined" style="font-size:1rem; color:var(--color-primary);">calculate</span>
+        <span class="bangla-text">২০+ ক্যালকুলেটর</span>
+      </div>
+      <div class="stat-pill">
+        <span class="material-symbols-outlined" style="font-size:1rem; color:var(--color-primary);">group</span>
+        <span class="bangla-text">৫০,০০০+ ব্যবহারকারী</span>
+      </div>
+      <div class="stat-pill">
+        <span class="material-symbols-outlined" style="font-size:1rem; color:var(--color-primary);">verified_user</span>
+        <span>100% Secure & Free</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+  // Keyboard shortcut: Ctrl+K / Cmd+K to focus search
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      document.getElementById('hero-search')?.focus();
+    }
+  });
+</script>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding-block: var(--section-padding);
+    background: linear-gradient(160deg,
+      rgba(209, 231, 221, 0.35) 0%,
+      rgba(248, 249, 250, 0.6) 40%,
+      var(--color-background) 100%
+    );
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .dark .hero-section {
+    background: linear-gradient(160deg,
+      rgba(0, 80, 58, 0.15) 0%,
+      rgba(15, 23, 42, 0.6) 40%,
+      var(--color-background) 100%
+    );
+  }
+
+  /* Decorative blobs */
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    opacity: 0.35;
+  }
+
+  .hero-blob-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,80,58,0.2), transparent 70%);
+    top: -150px; right: -100px;
+  }
+
+  .hero-blob-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(209,231,221,0.6), transparent 70%);
+    bottom: -100px; left: -80px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  /* Badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: rgba(0, 80, 58, 0.08);
+    color: var(--color-primary);
+    padding: 0.375rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border: 1px solid rgba(0, 80, 58, 0.15);
+  }
+
+  .dark .hero-badge {
+    background: rgba(131, 215, 180, 0.1);
+    color: var(--color-primary);
+    border-color: rgba(131, 215, 180, 0.2);
+  }
+
+  /* Title */
+  .hero-title {
+    font-size: clamp(1.875rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-on-surface);
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .hero-highlight {
+    color: var(--color-primary);
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+    border-radius: var(--radius-full);
+    opacity: 0.5;
+  }
+
+  /* Subtitle */
+  .hero-subtitle {
+    font-size: 1.0625rem;
+    color: var(--color-on-surface-variant);
+    max-width: 560px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* Search */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--color-surface-container-lowest);
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 0 1px var(--color-border-subtle);
+    padding: 0.4rem 0.4rem 0.4rem 1.25rem;
+    gap: 0.5rem;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .search-bar:focus-within {
+    box-shadow: 0 8px 32px rgba(0,80,58,0.15), 0 0 0 2px var(--color-primary);
+  }
+
+  .dark .search-bar {
+    background: var(--color-surface-container-highest);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px var(--color-outline);
+  }
+
+  .search-icon {
+    color: var(--color-on-surface-variant);
+    flex-shrink: 0;
+  }
+
+  .search-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--color-on-surface);
+    font-family: 'Hind Siliguri', sans-serif;
+    min-width: 0;
+  }
+
+  .search-input::placeholder { color: var(--color-on-surface-variant); opacity: 0.7; }
+
+  .search-btn {
+    padding: 0.625rem 1.5rem !important;
+    border-radius: var(--radius-full) !important;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 0.9375rem;
+    flex-shrink: 0;
+  }
+
+  /* Stats */
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: var(--color-surface-container-lowest);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-full);
+    padding: 0.375rem 0.875rem;
+    font-size: 0.8125rem;
+    color: var(--color-on-surface-variant);
+    font-weight: 500;
+  }
+
+  .dark .stat-pill {
+    background: var(--color-surface-container);
+    border-color: var(--color-outline);
+  }
+
+  /* Animations */
+  .animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>

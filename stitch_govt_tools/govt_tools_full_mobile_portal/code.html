@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="bn" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>GovtFlow - সরকারি কর্মচারীদের স্মার্ট টুলস</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-on-surface": "#f0f1f2",
+                "error": "#ba1a1a",
+                "on-error": "#ffffff",
+                "primary-container": "#00503a",
+                "surface-container-highest": "#e1e3e4",
+                "outline-variant": "#bfc9c2",
+                "surface-container-high": "#e7e8e9",
+                "on-primary-fixed": "#002116",
+                "surface-glass": "rgba(255, 255, 255, 0.7)",
+                "on-tertiary": "#ffffff",
+                "on-surface": "#191c1d",
+                "surface-dim": "#d9dadb",
+                "tertiary-fixed-dim": "#94d4b9",
+                "surface-container-low": "#f3f4f5",
+                "primary": "#003727",
+                "on-secondary-fixed-variant": "#374b43",
+                "surface": "#f8f9fa",
+                "on-primary-fixed-variant": "#02513b",
+                "on-primary": "#ffffff",
+                "secondary": "#4f635b",
+                "tertiary": "#003728",
+                "accent-blue": "#E7F1FF",
+                "surface-container": "#edeeef",
+                "on-primary-container": "#7fc1a5",
+                "success-emerald": "#10b981",
+                "warning-rose": "#f43f5e",
+                "inverse-surface": "#2e3132",
+                "tertiary-container": "#09503c",
+                "surface-tint": "#276a52",
+                "on-background": "#191c1d",
+                "surface-variant": "#e1e3e4",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#91d4b7",
+                "on-secondary-fixed": "#0c1f19",
+                "on-error-container": "#93000a",
+                "secondary-container": "#d1e8dd",
+                "secondary-fixed-dim": "#b6cbc2",
+                "tertiary-fixed": "#b0f0d4",
+                "outline": "#707974",
+                "on-surface-variant": "#404944",
+                "error-container": "#ffdad6",
+                "on-secondary": "#ffffff",
+                "accent-amber": "#FFF3CD",
+                "on-tertiary-container": "#82c1a7",
+                "primary-fixed": "#adf1d2",
+                "accent-purple": "#F3E5F5",
+                "on-tertiary-fixed-variant": "#0a513d",
+                "border-subtle": "#E9ECEF",
+                "on-tertiary-fixed": "#002116",
+                "secondary-fixed": "#d1e8dd",
+                "inverse-primary": "#91d4b7",
+                "surface-bright": "#f8f9fa",
+                "on-secondary-container": "#556961",
+                "background": "#f8f9fa"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-sm": "8px",
+                "stack-lg": "32px",
+                "stack-md": "16px",
+                "container-max": "1200px",
+                "section-padding": "64px",
+                "gutter": "24px",
+                "margin-mobile": "16px"
+        },
+        "fontFamily": {
+                "headline-lg": ["Hind Siliguri"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Hind Siliguri"],
+                "subtitle-sm": ["Inter"],
+                "bangla-body": ["Hind Siliguri"],
+                "body-md": ["Inter"],
+                "caption": ["Inter"],
+                "label-bold": ["Inter"],
+                "headline-lg-mobile": ["Hind Siliguri"]
+        },
+        "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "subtitle-sm": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "bangla-body": ["16px", {"lineHeight": "1.8", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "caption": ["10px", {"lineHeight": "1", "fontWeight": "700"}],
+                "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            font-family: 'Inter', 'Hind Siliguri', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E9ECEF;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .active-chip {
+            background-color: #003727;
+            color: #ffffff;
+        }
+        .inactive-chip {
+            background-color: #d1e8dd;
+            color: #556961;
+        }
+        .tool-card {
+            background-color: #ffffff;
+            border: 1px solid #E9ECEF;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .tool-card:active {
+            transform: scale(0.95);
+            background-color: #f3f4f5;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="pb-24">
+<!-- Top App Bar -->
+<header class="bg-surface-glass backdrop-blur-xl border-b border-border-subtle sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile h-16 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">menu</span>
+<h1 class="font-headline-md text-headline-lg-mobile font-bold text-primary">Govt Tools</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-bold text-label-bold text-primary px-2 py-1 rounded-lg border border-primary/20">BN/EN</button>
+<span class="material-symbols-outlined text-on-surface-variant">dark_mode</span>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="px-margin-mobile pt-8 pb-6 bg-gradient-to-b from-white to-surface text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-4 leading-tight">
+            সরকারি চাকরিজীবীদের হিসাব ও ডকুমেন্ট প্রসেসিং এখন এক ক্লিকেই
+        </h2>
+<p class="font-bangla-body text-body-md text-on-surface-variant mb-6">
+            All-in-one smart utility tools for Bangladeshi government employees. Simplify your calculations, manage service records, and process documents instantly.
+        </p>
+<!-- Search Bar -->
+<div class="relative group mx-auto max-w-md">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-white border border-border-subtle rounded-full focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm font-bangla-body text-sm transition-all" placeholder="সার্চ বা টুল খুঁজুন (যেমন: বেতন ক্যালকুলেটর, জিপিএফ...)" type="text"/>
+</div>
+</section>
+<!-- Filter Chips -->
+<div class="px-margin-mobile mb-8 overflow-x-auto hide-scrollbar flex gap-2">
+<button class="active-chip px-5 py-2 rounded-full font-label-bold text-label-bold whitespace-nowrap shadow-sm">সবগুলো</button>
+<button class="inactive-chip px-5 py-2 rounded-full font-label-bold text-label-bold whitespace-nowrap">আর্থিক ও বেতন</button>
+<button class="inactive-chip px-5 py-2 rounded-full font-label-bold text-label-bold whitespace-nowrap">পেনশন ও অবসর</button>
+<button class="inactive-chip px-5 py-2 rounded-full font-label-bold text-label-bold whitespace-nowrap">ইউটিলিটি টুলস</button>
+<button class="inactive-chip px-5 py-2 rounded-full font-label-bold text-label-bold whitespace-nowrap">প্রশাসন ও রেকর্ড</button>
+</div>
+<!-- Main Tool Sections -->
+<main class="px-margin-mobile space-y-10">
+<!-- Section 1: Financial (8 Tools) -->
+<section id="finance">
+<div class="flex justify-between items-end mb-4">
+<h3 class="font-headline-md text-primary">আর্থিক ও বেতন সংক্রান্ত টুলস</h3>
+<span class="text-xs text-primary font-bold">সব দেখুন</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="tool-card relative">
+<span class="absolute top-1 right-1 bg-warning-rose text-white text-[8px] px-1.5 py-0.5 rounded-full font-bold">NEW</span>
+<div class="w-10 h-10 bg-accent-blue rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">calculate</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">পে স্কেল ২০২৬ ক্যালকুলেটর</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-accent-amber rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">সরকারি বেতন ক্যালকুলেটর</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-accent-purple rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">show_chart</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">জিপিএফ মুনাফা ক্যালকুলেটর</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-secondary-container rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">আয়কর রিটার্ন হেল্পার</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">home_work</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">বাড়ি ভাড়া ভাতা বিভাজক</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">celebration</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">উৎসব বোনাস হিসাবকারী</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">track_changes</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">বেতন ফিক্সেশন ট্র্যাকিং</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">distance</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">ভ্রমণ ও দৈনিক ভাতা</h4>
+</div>
+</div>
+</section>
+<!-- Section 2: Pension (4 Tools) -->
+<section id="pension">
+<h3 class="font-headline-md text-primary mb-4">পেনশন ও অবসর সংক্রান্ত টুলস</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="tool-card">
+<div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">savings</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">পেনশন ও আনুতোষিক ক্যালকুলেটর</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">currency_exchange</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">পেনশন সমর্পণ হিসাবকারী</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">family_restroom</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">পারিবারিক পেনশন ক্যালকুলেটর</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">এলপিআর ছুটি নগদায়ন</h4>
+</div>
+</div>
+</section>
+<!-- Section 3: Smart Workflow (4 Tools) -->
+<section class="bg-primary/5 -mx-margin-mobile px-margin-mobile py-8" id="utility">
+<h3 class="font-headline-md text-primary mb-2">Smart Workflow</h3>
+<p class="text-xs text-on-surface-variant mb-6">ইউটিলিটি ও ডকুমেন্ট প্রসেসর</p>
+<div class="grid grid-cols-2 gap-3">
+<div class="tool-card">
+<div class="w-10 h-10 mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-3xl">picture_as_pdf</span>
+</div>
+<h4 class="font-label-bold text-xs">PDF to Word</h4>
+<p class="text-[9px] text-on-surface-variant">Convert documents</p>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-success-emerald text-3xl">photo_size_select_large</span>
+</div>
+<h4 class="font-label-bold text-xs">Photo Resizer</h4>
+<p class="text-[9px] text-on-surface-variant">Passport adjustment</p>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">ink_pen</span>
+</div>
+<h4 class="font-label-bold text-xs">Compressor</h4>
+<p class="text-[9px] text-on-surface-variant">Shrink file size</p>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 text-3xl">verified_user</span>
+</div>
+<h4 class="font-label-bold text-xs">Verification</h4>
+<p class="text-[9px] text-on-surface-variant">NID &amp; Doc Auth</p>
+</div>
+</div>
+</section>
+<!-- Section 4: Administration (4 Tools) -->
+<section id="records">
+<h3 class="font-headline-md text-primary mb-4">প্রশাসন ও চাকুরির রেকর্ড টুলস</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="tool-card">
+<div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">event_available</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">চাকুরির বয়স ক্যালকুলেটর</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">holiday_village</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">অর্জিত ছুটি ক্যালকুলেটর</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-sky-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">leaderboard</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">জ্যেষ্ঠতা তালিকা চেকার</h4>
+</div>
+<div class="tool-card">
+<div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+</div>
+<h4 class="font-label-bold text-xs text-on-surface leading-tight">ইনক্রিমেন্ট রিমাইন্ডার</h4>
+</div>
+</div>
+</section>
+<!-- Blog Section -->
+<section class="pb-12">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">newspaper</span>
+<h3 class="font-headline-md text-primary">সাম্প্রতিক সরকারি নিউজ ও ব্লগ</h3>
+</div>
+<div class="space-y-4">
+<div class="bg-white border border-border-subtle rounded-2xl overflow-hidden shadow-sm">
+<div class="h-40 bg-surface-container-high relative">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxilAjvHzOtAGmDmIorwY2oHAit1VJebOEXYN3jbuGdSJx7CDiwNrcT1K9tB3W4FMVa6RGPYJDluNiw_Wz7OkiymBS-2Q035d57UGgA2roPRtqVDVapZEhdBAXkj_tSN5LjqHfyJtmeEK1GRXs-HOkMkAhD42WurtHEa7rZ7Ipu9ZPBDKQUiBstefqOX-H037G__ARYPNbXnzICxTUi0FbdMdnsEnYFOB03p5GceOU_EUWKpGtEFFfx_UvVCGPEaIH0Bajdo0hweY"/>
+<div class="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Update</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-md text-base text-on-surface mb-2">পেনশন সহজীকরণ বিধিমালা ২০২৪: কি কি পরিবর্তন আসছে?</h4>
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span class="">২ ঘণ্টা আগে</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">visibility</span> ৫.২কে</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 bg-surface-glass backdrop-blur-xl border-t border-border-subtle shadow-[0_-4px_12px_rgba(0,0,0,0.05)] h-20">
+<!-- Home Active -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined size-6" data-weight="fill">home</span>
+<span class="font-subtitle-sm text-subtitle-sm">Home</span>
+</a>
+<!-- Services -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined size-6">grid_view</span>
+<span class="font-subtitle-sm text-subtitle-sm">Services</span>
+</a>
+<!-- Blog -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined size-6">newspaper</span>
+<span class="font-subtitle-sm text-subtitle-sm">Blog</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined size-6">person</span>
+<span class="font-subtitle-sm text-subtitle-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('button, .tool-card').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.classList.add('opacity-70');
+            });
+            btn.addEventListener('touchend', () => {
+                btn.classList.remove('opacity-70');
+            });
+        });
+
+        // Search bar focus effect
+        const searchBar = document.querySelector('input[type="text"]');
+        if (searchBar) {
+            searchBar.addEventListener('focus', () => {
+                searchBar.parentElement.classList.add('scale-[1.02]');
+            });
+            searchBar.addEventListener('blur', () => {
+                searchBar.parentElement.classList.remove('scale-[1.02]');
+            });
+        }
+    </script>
+</body></html>

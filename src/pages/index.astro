@@ -1,0 +1,316 @@
+---
+// index.astro — GovUtil BD Homepage
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import CategoryNav from '../components/CategoryNav.astro';
+import ToolCard from '../components/ToolCard.astro';
+import SmartWorkflow from '../components/SmartWorkflow.astro';
+import BlogSection from '../components/BlogSection.astro';
+import Footer from '../components/Footer.astro';
+
+// ── Tool Data ──────────────────────────────────────────────
+
+const financeTools = [
+  {
+    icon: "calculate",
+    title: "পে স্কেল ২০২৬ ক্যালকুলেটর",
+    desc: "নতুন বেতন কাঠামো অনুযায়ী আপনার সম্ভাব্য বেতন নির্ধারণ করুন।",
+    iconBg: "var(--color-accent-blue)",
+    href: "/tools/pay-scale-2026",
+    badge: "New 🔥",
+  },
+  {
+    icon: "account_balance_wallet",
+    title: "সরকারি বেতন ক্যালকুলেটর",
+    desc: "চলতি বছরের ইনক্রিমেন্টসহ বেতন ও ভাতার বিস্তারিত হিসাব দেখুন।",
+    iconBg: "var(--color-accent-emerald)",
+    href: "/tools/salary",
+  },
+  {
+    icon: "show_chart",
+    title: "জিপিএফ মুনাফা ক্যালকুলেটর",
+    desc: "জিপিএফ অ্যাকাউন্টের বার্ষিক মুনাফা ও স্থিতি বের করুন।",
+    iconBg: "var(--color-accent-amber)",
+    href: "/tools/gpf",
+  },
+  {
+    icon: "receipt_long",
+    title: "আয়কর রিটার্ন হেল্পার",
+    desc: "বার্ষিক আয় ও করমুক্ত সীমার ভিত্তিতে ট্যাক্স রিটার্ন তৈরি।",
+    iconBg: "var(--color-accent-purple)",
+    href: "/tools/tax",
+  },
+  {
+    icon: "home_work",
+    title: "বাড়ি ভাড়া ভাতা বিভাজক",
+    desc: "এলাকাভেদে বাড়ি ভাড়া ভাতার সঠিক হিসাব।",
+    iconBg: "var(--color-accent-blue)",
+    href: "/tools/house-rent",
+  },
+  {
+    icon: "celebration",
+    title: "উৎসব বোনাস হিসাবকারী",
+    desc: "ঈদুল ফিতর, আযহা ও বৈশাখী ভাতার ক্যালকুলেশন।",
+    iconBg: "var(--color-accent-rose)",
+    href: "/tools/bonus",
+  },
+  {
+    icon: "track_changes",
+    title: "বেতন ফিক্সেশন ট্র্যাকিং",
+    desc: "আপনার সার্ভিস বুকে বেতন ফিক্সেশনের সঠিকতা যাচাই।",
+    iconBg: "var(--color-accent-cyan)",
+    href: "/tools/fixation",
+  },
+  {
+    icon: "distance",
+    title: "টিএ/ডিএ ক্যালকুলেটর",
+    desc: "সরকারি ট্যুরের দূরত্ব ও সময় অনুযায়ী বিল হিসাব।",
+    iconBg: "var(--color-accent-emerald)",
+    href: "/tools/ta-da",
+  },
+];
+
+const pensionTools = [
+  {
+    icon: "savings",
+    title: "পেনশন ও আনুতোষিক ক্যালকুলেটর",
+    desc: "অবসরোত্তর এককালীন আনুতোষিক বা গ্র্যাচুইটির হিসাব।",
+    iconBg: "var(--color-accent-amber)",
+    href: "/tools/pension",
+  },
+  {
+    icon: "currency_exchange",
+    title: "পেনশন সমর্পণ হিসাবকারী",
+    desc: "পেনশন সমর্পণ বা কমিউটেশন ভ্যালু হিসাব করুন।",
+    iconBg: "var(--color-accent-emerald)",
+    href: "/tools/pension-commutation",
+  },
+  {
+    icon: "family_restroom",
+    title: "পারিবারিক পেনশন ক্যালকুলেটর",
+    desc: "উত্তরাধিকারীদের প্রাপ্য পেনশন ও ভাতার বিবরণ।",
+    iconBg: "var(--color-accent-blue)",
+    href: "/tools/family-pension",
+  },
+  {
+    icon: "calendar_month",
+    title: "এলপিআর ছুটি নগদায়ন",
+    desc: "অর্জিত ছুটির বিপরীতে কত টাকা নগদ পাবেন তা দেখুন।",
+    iconBg: "var(--color-accent-rose)",
+    href: "/tools/lpr",
+  },
+];
+
+const adminTools = [
+  {
+    icon: "event_available",
+    title: "চাকুরির বয়স ক্যালকুলেটর",
+    desc: "আজকের দিন পর্যন্ত আপনার মোট চাকরিকাল নিখুঁতভাবে জানুন।",
+    iconBg: "var(--color-accent-purple)",
+    href: "/tools/service-age",
+  },
+  {
+    icon: "holiday_village",
+    title: "অর্জিত ছুটি ক্যালকুলেটর",
+    desc: "গড় বেতনে ও অর্ধ-গড় বেতনে অর্জিত ছুটির নির্ভুল হিসাব।",
+    iconBg: "var(--color-accent-emerald)",
+    href: "/tools/earned-leave",
+  },
+  {
+    icon: "leaderboard",
+    title: "জ্যেষ্ঠতা র‍্যাংক চেকার",
+    desc: "ব্যাচ ভিত্তিক জ্যেষ্ঠতা তালিকায় আপনার অবস্থান দেখুন।",
+    iconBg: "var(--color-accent-blue)",
+    href: "/tools/seniority",
+  },
+  {
+    icon: "notifications_active",
+    title: "ইনক্রিমেন্ট রিমাইন্ডার",
+    desc: "পরবর্তী বার্ষিক ইনক্রিমেন্টের তারিখ ও বকেয়া হিসাব।",
+    iconBg: "var(--color-accent-rose)",
+    href: "/tools/increment-reminder",
+  },
+];
+---
+
+<BaseLayout
+  title="GovUtil BD - সরকারি কর্মচারী ইউটিলিটি পোর্টাল | পে স্কেল, বেতন, পেনশন ক্যালকুলেটর"
+  description="বাংলাদেশ সরকারি কর্মচারীদের জন্য পে স্কেল ২০২৬, বেতন, পেনশন ও ইউটিলিটি ক্যালকুলেটর। All-in-one smart tools for Bangladeshi government employees."
+>
+  <!-- Sticky header -->
+  <Header />
+
+  <main id="main-content">
+
+    <!-- Hero with search -->
+    <Hero />
+
+    <!-- Sticky category filter -->
+    <CategoryNav />
+
+    <!-- ── Tools Sections ──────────────────────────── -->
+    <div class="tools-wrapper">
+      <div class="container tools-container">
+
+        <!-- 1. Finance & Salary -->
+        <section class="tool-section" data-cat="finance" id="finance" aria-labelledby="finance-heading">
+          <div class="section-heading">
+            <div class="section-heading-icon" style="background:var(--color-accent-blue);">
+              <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:1.5rem;">payments</span>
+            </div>
+            <h2 id="finance-heading" class="text-headline-md bangla-text" style="color:var(--color-on-surface);">
+              আর্থিক ও বেতন সংক্রান্ত টুলস
+            </h2>
+          </div>
+          <div class="tool-grid">
+            {financeTools.map(tool => <ToolCard {...tool} />)}
+          </div>
+        </section>
+
+        <!-- 2. Pension & Retirement -->
+        <section class="tool-section" data-cat="pension" id="pension" aria-labelledby="pension-heading">
+          <div class="section-heading">
+            <div class="section-heading-icon" style="background:var(--color-accent-amber);">
+              <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:1.5rem;">elderly</span>
+            </div>
+            <h2 id="pension-heading" class="text-headline-md bangla-text" style="color:var(--color-on-surface);">
+              পেনশন ও অবসর সংক্রান্ত টুলস
+            </h2>
+          </div>
+          <div class="tool-grid">
+            {pensionTools.map(tool => <ToolCard {...tool} />)}
+          </div>
+        </section>
+
+        <!-- 3. Smart Workflow / Utility banner -->
+        <section class="tool-section" data-cat="utility">
+          <SmartWorkflow />
+        </section>
+
+        <!-- 4. Admin & Records -->
+        <section class="tool-section" data-cat="admin" id="records" aria-labelledby="admin-heading">
+          <div class="section-heading">
+            <div class="section-heading-icon" style="background:var(--color-accent-purple);">
+              <span class="material-symbols-outlined" style="color:var(--color-primary); font-size:1.5rem;">badge</span>
+            </div>
+            <h2 id="admin-heading" class="text-headline-md bangla-text" style="color:var(--color-on-surface);">
+              প্রশাসন ও চাকুরির রেকর্ড টুলস
+            </h2>
+          </div>
+          <div class="tool-grid">
+            {adminTools.map(tool => <ToolCard {...tool} />)}
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Trust bar -->
+    <section class="trust-section" aria-label="Trusted by government employees">
+      <div class="container trust-inner">
+        <p class="trust-label">Trusted by thousands of Bangladeshi government employees</p>
+        <div class="trust-items">
+          <div class="trust-item">
+            <span class="material-symbols-outlined" style="font-size:2rem; color:var(--color-primary);">verified_user</span>
+            <span class="trust-text">100% Secure</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="material-symbols-outlined" style="font-size:2rem; color:var(--color-primary);">devices</span>
+            <span class="trust-text">Works on Any Device</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="material-symbols-outlined" style="font-size:2rem; color:var(--color-primary);">bolt</span>
+            <span class="trust-text">Instant Results</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="material-symbols-outlined" style="font-size:2rem; color:var(--color-primary);">cloud_off</span>
+            <span class="trust-text">Works Offline</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog / News section -->
+    <BlogSection />
+
+  </main>
+
+  <!-- Footer -->
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Tools area */
+  .tools-wrapper {
+    padding-block: 3rem 0;
+    background: var(--color-background);
+  }
+
+  .tools-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Trust bar */
+  .trust-section {
+    padding-block: 3rem;
+    background: var(--color-surface-container);
+    border-block: 1px solid var(--color-border-subtle);
+  }
+
+  .trust-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .trust-label {
+    color: var(--color-on-surface-variant);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .trust-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  .trust-item:hover { opacity: 1; }
+
+  .trust-text {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-on-surface);
+  }
+
+  .trust-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--color-outline-variant);
+  }
+
+  @media (max-width: 600px) {
+    .trust-divider { display: none; }
+    .trust-items { gap: 1rem; }
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+// ToolCard.astro — Reusable tool card component
+interface Props {
+  icon: string;           // Material Symbol name e.g. "calculate"
+  title: string;          // Bangla title
+  desc: string;           // Bangla description
+  iconBg?: string;        // CSS color for icon background e.g. "var(--color-accent-blue)"
+  href?: string;          // Link target
+  badge?: string;         // Optional badge text e.g. "New 🔥"
+  badgeColor?: string;    // Badge bg color (default red)
+}
+
+const {
+  icon,
+  title,
+  desc,
+  iconBg = "var(--color-accent-blue)",
+  href = "#",
+  badge,
+  badgeColor = "#dc2626",
+} = Astro.props;
+---
+
+<a href={href} class="tool-card" role="article" aria-label={title}>
+  {badge && (
+    <span class="tool-card-badge" style={`background:${badgeColor};`}>
+      {badge}
+    </span>
+  )}
+
+  <div class="tool-card-icon" style={`background:${iconBg};`}>
+    <span class="material-symbols-outlined card-icon" style="color:var(--color-primary); font-size:1.75rem;">
+      {icon}
+    </span>
+  </div>
+
+  <h3 class="tool-card-title bangla-text">{title}</h3>
+  <p class="tool-card-desc bangla-text">{desc}</p>
+
+  <div class="tool-card-cta">
+    <span class="bangla-text">ব্যবহার করুন</span>
+    <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span>
+  </div>
+</a>
+
+<style>
+  a.tool-card {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tool-card-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-primary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .tool-card:hover .tool-card-cta {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
