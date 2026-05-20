@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="bn"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GovUtil BD - পে স্কেল ২০২৬ ক্যালকুলেটর</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e7e8e9",
+                        "outline": "#6f7a73",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#00513b",
+                        "tertiary": "#074f3b",
+                        "accent-blue": "#E7F1FF",
+                        "on-tertiary-fixed": "#002116",
+                        "surface-container-low": "#f3f4f5",
+                        "border-subtle": "#E9ECEF",
+                        "secondary-container": "#d1e7dd",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#92e7c3",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed": "#d1e7dd",
+                        "surface-glass": "rgba(255, 255, 255, 0.7)",
+                        "tertiary-fixed-dim": "#94d4b9",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00503a",
+                        "inverse-primary": "#83d7b4",
+                        "surface": "#f8f9fa",
+                        "accent-amber": "#FFF3CD",
+                        "on-background": "#191c1d",
+                        "secondary": "#4f635b",
+                        "on-tertiary-container": "#a3e3c7",
+                        "on-secondary-fixed-variant": "#374b44",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#0a513c",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#3f4944",
+                        "secondary-fixed-dim": "#b6cbc2",
+                        "on-surface": "#191c1d",
+                        "primary-fixed-dim": "#83d7b4",
+                        "on-secondary-container": "#556961",
+                        "tertiary-container": "#286751",
+                        "surface-tint": "#046c50",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#bec9c2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#0c1f19",
+                        "surface-variant": "#e1e3e4",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed": "#b0f0d4",
+                        "surface-bright": "#f8f9fa",
+                        "primary-container": "#006a4e",
+                        "primary-fixed": "#9ef4d0",
+                        "on-primary-fixed": "#002116",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-dim": "#d9dadb",
+                        "surface-container": "#edeeef",
+                        "accent-purple": "#F3E5F5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "section-padding": "64px",
+                        "margin-mobile": "16px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hind Siliguri"],
+                        "bangla-body": ["Hind Siliguri"],
+                        "subtitle-sm": ["Inter"],
+                        "headline-md": ["Hind Siliguri"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hind Siliguri"],
+                        "label-bold": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "bangla-body": ["16px", {"lineHeight": "1.8", "fontWeight": "400"}],
+                        "subtitle-sm": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bangla-text { font-family: 'Hind Siliguri', sans-serif; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .tool-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #00503a !important;
+            box-shadow: 0 0 0 2px rgba(0, 80, 58, 0.1) !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar (Identical to Home Page) -->
+<header class="bg-surface-glass backdrop-blur-md dark:bg-inverse-surface/80 docked full-width top-0 sticky z-50 border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary" href="#">Govt Tools</a>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-primary border-b-2 border-primary transition-colors text-label-bold font-label-bold flex items-center gap-2 group" href="#">
+<div class="flex flex-col items-center"><span class="bangla-text text-base">হোম</span></div>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-bold font-label-bold flex items-center gap-2 group" href="#">
+<div class="flex flex-col items-center"><span class="bangla-text text-base">সবগুলো টুলস</span></div>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-bold font-label-bold flex items-center gap-2 group" href="#blog">
+<div class="flex flex-col items-center"><span class="bangla-text text-base">সরকারি নিউজ ব্লগ</span></div>
+</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 mr-2">
+<div class="flex items-center gap-1 cursor-pointer group">
+<span class="text-primary font-label-bold text-label-bold">BN</span>
+<span class="text-on-surface-variant font-label-bold text-label-bold">/</span>
+<span class="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold">EN</span>
+</div>
+<button class="flex items-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-bold text-label-bold hover:opacity-90 active:scale-95 transition-all">Sign In</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section (Replicating Home Style) -->
+<section class="relative py-16 bg-gradient-to-b from-secondary-container/30 to-background overflow-hidden border-b border-outline-variant/30">
+<div class="max-w-container-max mx-auto px-margin-mobile text-center">
+<h1 class="font-headline-lg text-headline-lg md:text-5xl text-primary mb-stack-sm bangla-text">পে স্কেল ২০২৬ ক্যালকুলেটর</h1>
+<p class="text-body-lg text-secondary mb-0 max-w-2xl mx-auto opacity-80 bangla-text">
+                আপনার নতুন বেতন কাঠামো এবং সুযোগ-সুবিধা হিসাব করুন
+            </p>
+</div>
+</section>
+<div class="max-w-container-max mx-auto px-margin-mobile py-stack-lg">
+<!-- Calculator Interface -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Inputs -->
+<div class="lg:col-span-5 space-y-gutter">
+<div class="bg-surface-container-lowest border border-slate-200 p-stack-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-3 mb-stack-lg text-primary">
+<span class="material-symbols-outlined p-2 bg-secondary-container/30 rounded-lg">edit_note</span>
+<h2 class="font-headline-md text-headline-md bangla-text">তথ্য প্রদান করুন</h2>
+</div>
+<div class="space-y-stack-lg">
+<!-- Grade Select -->
+<div class="space-y-stack-sm">
+<label class="font-label-bold text-on-surface-variant text-sm bangla-text">গ্রেড সিলেক্ট করুন</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">person</span>
+<select class="w-full pl-12 pr-4 py-3 bg-surface border border-outline-variant rounded-lg appearance-none cursor-pointer focus:ring-0 bangla-text">
+<option>৯ম গ্রেড (কর্মকর্তা)</option>
+<option>১০ম গ্রেড</option>
+<option>১১তম গ্রেড</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+<!-- Basic Salary -->
+<div class="space-y-stack-sm">
+<label class="font-label-bold text-on-surface-variant text-sm bangla-text">জুলাই ২০২৬ এ মূল বেতন (টাকায়)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">payments</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface border border-outline-variant rounded-lg focus:ring-0 bangla-text" type="number" value="29500"/>
+</div>
+</div>
+<!-- Posting Location -->
+<div class="space-y-stack-sm">
+<label class="font-label-bold text-on-surface-variant text-sm bangla-text">পোস্টিং প্লেস বা অবস্থান</label>
+<div class="space-y-stack-sm">
+<button class="w-full flex items-center gap-3 p-4 border border-outline-variant rounded-lg hover:bg-secondary-container/10 transition-all group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">location_on</span>
+<span class="text-on-surface-variant bangla-text">ঢাকা সিটি কর্পোরেশন এলাকা</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 border-2 border-primary bg-secondary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-primary" style='font-variation-settings: "FILL" 1;'>location_on</span>
+<span class="text-primary font-bold bangla-text">চট্টগ্রাম, খুলনা, রাজশাহী, সিলেট, বরিশাল, রংপুর, নারায়ণগঞ্জ ও গাজীপুর সিটি কর্পোরেশন এবং সাভার পৌর এলাকা</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 border border-outline-variant rounded-lg hover:bg-secondary-container/10 transition-all group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">location_on</span>
+<span class="text-on-surface-variant bangla-text">জেলা বা উপজেলা (অন্যান্য স্থান)</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- How it works card (Style matching featured items) -->
+<div class="bg-primary text-on-primary p-stack-lg rounded-xl shadow-lg relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">trending_up</span>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined bg-white/20 p-2 rounded-lg">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md bangla-text">ফলাফল কিভাবে কাজ করে?</h3>
+</div>
+<p class="text-on-primary/80 leading-relaxed bangla-text text-sm relative z-10">
+                        নতুন মূল বেতন = (২০২৬ এর শুরুর ধাপ - ২০১৫ এর শুরুর ধাপ) × ৫০% + বর্তমান মূল বেতন। এর সাথে বাড়ি ভাড়া, চিকিৎসা ও অন্যান্য ভাতা যুক্ত হয়ে গ্রস বেতন নির্ধারিত হবে।
+                    </p>
+</div>
+</div>
+<!-- Right Column: Results -->
+<div class="lg:col-span-7 space-y-gutter">
+<div class="bg-surface-container-lowest border border-slate-200 p-stack-lg rounded-xl shadow-sm h-full flex flex-col">
+<div class="mb-stack-lg">
+<span class="text-outline font-label-bold text-sm uppercase tracking-wide">প্রাক্কলিত সর্বমোট প্রাপ্তি</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-[48px] md:text-[64px] font-bold text-primary leading-none">৳ ৫৫,৮২৫</span>
+<div class="bg-primary/10 text-primary p-2 rounded-full">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-stack-lg">
+<div class="p-stack-md bg-surface-container-low rounded-xl border border-slate-100">
+<span class="text-on-surface-variant text-sm block mb-1 bangla-text">২০২৬ নির্ধারিত মূল বেতন</span>
+<span class="text-headline-md text-primary font-bold">৳ ৪১,০৫০</span>
+</div>
+<div class="p-stack-md bg-surface-container-low rounded-xl border border-slate-100">
+<span class="text-on-surface-variant text-sm block mb-1 bangla-text">মোট বাড়ি ভাড়া ভাতা</span>
+<span class="text-headline-md text-primary font-bold">৳ ১৩,২৭৫</span>
+</div>
+</div>
+<div class="space-y-stack-md mb-stack-lg">
+<h4 class="text-secondary font-label-bold text-sm uppercase border-b border-outline-variant/30 pb-2">ভাতা সমূহের বিবরণ</h4>
+<div class="flex justify-between items-center py-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-accent-blue flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<span class="text-on-surface font-medium bangla-text">চিকিৎসা ভাতা</span>
+</div>
+<span class="text-on-surface font-bold">৳ ১,৫০০</span>
+</div>
+</div>
+<!-- Final Summary Highlight (Emerald Style) -->
+<div class="mt-auto bg-primary p-6 rounded-xl flex items-center justify-between group cursor-pointer tool-card shadow-md">
+<div class="flex items-center gap-4 text-white">
+<div class="bg-white/20 p-2 rounded-full">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>check_circle</span>
+</div>
+<div>
+<span class="text-white/80 text-sm block bangla-text">সব মিলিয়ে জুলাই ২০২৬-এ আপনার মোট বেতন হবে</span>
+<span class="text-2xl md:text-3xl font-bold">৳ ৫৫,৮২৫ /-</span>
+</div>
+</div>
+<button class="bg-white/20 text-white p-4 rounded-xl hover:bg-white/30 transition-all">
+<span class="material-symbols-outlined">print</span>
+</button>
+</div>
+<div class="mt-stack-lg p-stack-md bg-surface-container rounded-lg border border-outline-variant/30 flex gap-3">
+<span class="material-symbols-outlined text-outline shrink-0">info</span>
+<p class="text-xs text-on-surface-variant leading-relaxed bangla-text">
+                            পরামর্শ: বাড়ি ভাড়া ক্যালকুলেশন করার সময় জুলাই ২০২৬ এর মূল বেতন (২৯৫০০) ব্যবহার করা হয়েছে, যা ২০১৫ স্কেলের ধাপ অনুযায়ী।
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Article Section (Matching Home Body Hierarchy) -->
+<section class="mt-section-padding border-t border-outline-variant/30 pt-section-padding bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-margin-mobile">
+<div class="text-center mb-stack-lg"><h2 class="font-headline-lg text-headline-lg text-primary bangla-text">কিভাবে বেতন নির্ধারণ করা হয়?</h2><p class="text-body-md text-on-surface-variant max-w-3xl mx-auto bangla-text leading-relaxed mt-4">সরকারি কর্মচারীদের বেতন নির্ধারণের প্রক্রিয়া সুনির্দিষ্ট বিধিমালার (পে স্কেল ২০২৬) মাধ্যমে পরিচালিত হয়। এই কাঠামোতে মূল বেতনের পাশাপাশি বাড়ি ভাড়া, চিকিৎসা ভাতা এবং অন্যান্য সরকারি সুযোগ-সুবিধা অত্যন্ত গুরুত্বপূর্ণ ভূমিকা পালন করে। নিচে এই বেতন নির্ধারণের বিস্তারিত প্রক্রিয়া সহজভাবে তুলে ধরা হলো:</p></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mt-12">
+<div class="space-y-stack-sm p-stack-md rounded-xl hover:bg-surface transition-colors">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-primary flex items-center justify-center text-xl font-bold mb-4">১</div>
+<h3 class="font-headline-md text-primary bangla-text">মূল বেতন নির্ধারণ</h3>
+<p class="text-body-md text-on-surface-variant bangla-text leading-relaxed">নতুন পে স্কেলে মূল বেতন নির্ধারিত হয় পূর্ববর্তী স্কেলের ধাপ এবং বর্তমান মূল বেতনের সমন্বয়ে। ইনক্রিমেন্ট যোগ হয়ে নতুন ধাপ নির্ধারিত হয়।</p>
+</div>
+<div class="space-y-stack-sm p-stack-md rounded-xl hover:bg-surface transition-colors">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-primary flex items-center justify-center text-xl font-bold mb-4">২</div>
+<h3 class="font-headline-md text-primary bangla-text">বাড়ি ভাড়া নিয়ম</h3>
+<p class="text-body-md text-on-surface-variant bangla-text leading-relaxed">পোস্টিং এলাকাভেদে বাড়ি ভাড়ার হার ভিন্ন হয়। ঢাকা সিটির জন্য সর্বোচ্চ ৫০%, বড় শহরের জন্য ৪৫% এবং জেলা/উপজেলা পর্যায়ে ৪০% বা তার কম হয়।</p>
+</div>
+<div class="space-y-stack-sm p-stack-md rounded-xl hover:bg-surface transition-colors">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-primary flex items-center justify-center text-xl font-bold mb-4">৩</div>
+<h3 class="font-headline-md text-primary bangla-text">চিকিৎসা ভাতা</h3>
+<p class="text-body-md text-on-surface-variant bangla-text leading-relaxed">সকল পর্যায়ের সরকারি কর্মচারীদের জন্য বর্তমানে মাসিক ১৫০০ টাকা চিকিৎসা ভাতা ফিক্সড করা হয়েছে, যা সকল গ্রেডের জন্য সমান।</p>
+</div>
+<div class="space-y-stack-sm p-stack-md rounded-xl hover:bg-surface transition-colors">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-primary flex items-center justify-center text-xl font-bold mb-4">৪</div>
+<h3 class="font-headline-md text-primary bangla-text">বার্ষিক ইনক্রিমেন্ট</h3>
+<p class="text-body-md text-on-surface-variant bangla-text leading-relaxed">প্রতি বছর ১লা জুলাই তারিখে ৫% হারে বার্ষিক ইনক্রিমেন্ট প্রদান করা হয় যা মূল বেতনের সাথে যোগ হয়ে বেতন বৃদ্ধি নিশ্চিত করে।</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer (Identical to Home Page) -->
+<script>
+    // Micro-interaction for inputs
+    document.querySelectorAll('input, select, button').forEach(el => {
+        el.addEventListener('focus', () => {
+            el.parentElement.classList.add('ring-2', 'ring-primary/10');
+        });
+        el.addEventListener('blur', () => {
+            el.parentElement.classList.remove('ring-2', 'ring-primary/10');
+        });
+    });
+
+    // Simple scale simulator
+    const salaryInput = document.querySelector('input[type="number"]');
+    salaryInput.addEventListener('input', function(e) {
+        const val = parseInt(e.target.value) || 0;
+        const totalDisplay = document.querySelector('.text-\\[48px\\]');
+        const summaryTotal = document.querySelector('.text-2xl.md\\:text-3xl');
+        
+        const newTotalValue = Math.round(val * 1.89);
+        const formattedTotal = '৳ ' + newTotalValue.toLocaleString();
+        
+        totalDisplay.innerText = formattedTotal;
+        summaryTotal.innerText = formattedTotal + ' /-';
+    });
+</script>
+</body></html>

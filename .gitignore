@@ -92,3 +92,13 @@ test-results/
 *.bak
 *.swp
 *.swo
+
+# ===========================
+# Images
+# ===========================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp

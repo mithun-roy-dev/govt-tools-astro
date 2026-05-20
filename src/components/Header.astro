@@ -37,7 +37,7 @@
 
       <!-- All Tools — with mega menu -->
       <div
-        style="position:relative;"
+        class="mega-menu-wrapper"
         @mouseenter="megaOpen = true"
         @mouseleave="megaOpen = false"
       >
@@ -61,10 +61,10 @@
                 <span style="font-weight:700;" class="bangla-text">আর্থিক ও বেতন</span>
               </div>
               <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
-                <li><a href="/tools/pay-scale-2026" class="mega-link bangla-text">পে স্কেল ২০২৬</a></li>
-                <li><a href="/tools/salary" class="mega-link bangla-text">বেতন ক্যালকুলেটর</a></li>
-                <li><a href="/tools/gpf" class="mega-link bangla-text">জিপিএফ মুনাফা</a></li>
-                <li><a href="/tools/tax" class="mega-link bangla-text">আয়কর হেল্পার</a></li>
+                <li><a href="/pay-scale-2026" class="mega-link bangla-text">পে স্কেল ২০২৬ ক্যালকুলেটর</a></li>
+                <li><a href="/salary" class="mega-link bangla-text">বেতন ক্যালকুলেটর</a></li>
+                <li><a href="/gpf" class="mega-link bangla-text">জিপিএফ মুনাফা</a></li>
+                <li><a href="/tax" class="mega-link bangla-text">আয়কর হেল্পার</a></li>
               </ul>
             </div>
 
@@ -75,10 +75,10 @@
                 <span style="font-weight:700;" class="bangla-text">পেনশন ও অবসর</span>
               </div>
               <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
-                <li><a href="/tools/pension" class="mega-link bangla-text">পেনশন ক্যালকুলেটর</a></li>
-                <li><a href="/tools/pension-commutation" class="mega-link bangla-text">পেনশন সমর্পণ</a></li>
-                <li><a href="/tools/family-pension" class="mega-link bangla-text">পারিবারিক পেনশন</a></li>
-                <li><a href="/tools/lpr" class="mega-link bangla-text">এলপিআর নগদায়ন</a></li>
+                <li><a href="/pension" class="mega-link bangla-text">পেনশন ক্যালকুলেটর</a></li>
+                <li><a href="/pension-commutation" class="mega-link bangla-text">পেনশন সমর্পণ</a></li>
+                <li><a href="/family-pension" class="mega-link bangla-text">পারিবারিক পেনশন</a></li>
+                <li><a href="/lpr" class="mega-link bangla-text">এলপিআর নগদায়ন</a></li>
               </ul>
             </div>
 
@@ -89,10 +89,10 @@
                 <span style="font-weight:700;" class="bangla-text">ইউটিলিটি টুলস</span>
               </div>
               <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
-                <li><a href="/tools/pdf-to-word" class="mega-link">PDF to Word</a></li>
-                <li><a href="/tools/photo-resizer" class="mega-link">Photo Resizer</a></li>
-                <li><a href="/tools/compressor" class="mega-link bangla-text">ফাইল কম্প্রেসর</a></li>
-                <li><a href="/tools/verification" class="mega-link bangla-text">ডকুমেন্ট ভেরিফিকেশন</a></li>
+                <li><a href="/pdf-to-word" class="mega-link">PDF to Word</a></li>
+                <li><a href="/photo-resizer" class="mega-link">Photo Resizer</a></li>
+                <li><a href="/compressor" class="mega-link bangla-text">ফাইল কম্প্রেসর</a></li>
+                <li><a href="/verification" class="mega-link bangla-text">ডকুমেন্ট ভেরিফিকেশন</a></li>
               </ul>
             </div>
 
@@ -103,10 +103,10 @@
                 <span style="font-weight:700;" class="bangla-text">প্রশাসন ও রেকর্ড</span>
               </div>
               <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
-                <li><a href="/tools/service-age" class="mega-link bangla-text">চাকুরির বয়স</a></li>
-                <li><a href="/tools/earned-leave" class="mega-link bangla-text">অর্জিত ছুটি</a></li>
-                <li><a href="/tools/seniority" class="mega-link bangla-text">জ্যেষ্ঠতা র‍্যাংক</a></li>
-                <li><a href="/tools/increment-reminder" class="mega-link bangla-text">ইনক্রিমেন্ট রিমাইন্ডার</a></li>
+                <li><a href="/service-age" class="mega-link bangla-text">চাকুরির বয়স</a></li>
+                <li><a href="/earned-leave" class="mega-link bangla-text">অর্জিত ছুটি</a></li>
+                <li><a href="/seniority" class="mega-link bangla-text">জ্যেষ্ঠতা র‍্যাংক</a></li>
+                <li><a href="/increment-reminder" class="mega-link bangla-text">ইনক্রিমেন্ট রিমাইন্ডার</a></li>
               </ul>
             </div>
           </div>
@@ -193,10 +193,10 @@
         <a href="/tools" class="drawer-link bangla-text">🔧 সবগুলো টুলস</a>
         <a href="/blog" class="drawer-link bangla-text">📰 সরকারি নিউজ ব্লগ</a>
         <hr style="border-color: var(--color-border-subtle); margin: 0.5rem 0;">
-        <a href="/tools/pay-scale-2026" class="drawer-link bangla-text">💰 পে স্কেল ২০২৬</a>
-        <a href="/tools/salary" class="drawer-link bangla-text">📊 বেতন ক্যালকুলেটর</a>
-        <a href="/tools/pension" class="drawer-link bangla-text">👴 পেনশন ক্যালকুলেটর</a>
-        <a href="/tools/gpf" class="drawer-link bangla-text">📈 জিপিএফ মুনাফা</a>
+        <a href="/pay-scale-2026" class="drawer-link bangla-text">💰 পে স্কেল ২০২৬ ক্যালকুলেটর</a>
+        <a href="/salary" class="drawer-link bangla-text">📊 বেতন ক্যালকুলেটর</a>
+        <a href="/pension" class="drawer-link bangla-text">👴 পেনশন ক্যালকুলেটর</a>
+        <a href="/gpf" class="drawer-link bangla-text">📈 জিপিএফ মুনাফা</a>
       </nav>
 
       <div style="margin-top:auto; display:flex; gap:0.75rem; padding-top:1rem; border-top: 1px solid var(--color-border-subtle);">
@@ -219,6 +219,21 @@
     .desktop-nav  { display: none !important; }
     .desktop-only { display: none !important; }
     .mobile-only  { display: flex !important; }
+  }
+
+  /* Mega Menu Wrapper */
+  .mega-menu-wrapper {
+    position: relative;
+  }
+  
+  /* Invisible bridge to prevent hover loss when moving mouse to menu */
+  .mega-menu-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
   }
 
   /* Nav links */
